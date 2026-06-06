@@ -153,18 +153,15 @@ if opsi == "📁 Upload Banyak Gambar":
                 width=300
             )
 
-            # Menampilkan hasil
-            if label == "bawang_merah":
-
-                st.success(
-                    f"🧅 Bawang Merah ({conf:.2f}%)"
-                )
-
+            # Menampilkan hasil dengan Threshold (Batas Keyakinan)
+            THRESHOLD = 75.0
+            
+            if conf < THRESHOLD:
+                st.error(f"❌ Tidak dapat mendeteksi. Model ragu ({conf:.2f}%). Pastikan ini gambar Bawang Merah/Putih.")
+            elif label == "bawang_merah":
+                st.success(f"🧅 Bawang Merah ({conf:.2f}%)")
             else:
-
-                st.success(
-                    f"🧄 Bawang Putih ({conf:.2f}%)"
-                )
+                st.success(f"🧄 Bawang Putih ({conf:.2f}%)")
 
             # Menampilkan confidence tiap kelas
             st.write("Tingkat Kepercayaan")
@@ -204,18 +201,15 @@ else:
             width=350
         )
 
-        # Menampilkan hasil
-        if label == "bawang_merah":
-
-            st.success(
-                f"🧅 Bawang Merah ({conf:.2f}%)"
-            )
-
+        # Menampilkan hasil dengan Threshold (Batas Keyakinan)
+        THRESHOLD = 75.0
+        
+        if conf < THRESHOLD:
+            st.error(f"❌ Tidak dapat mendeteksi. Model ragu ({conf:.2f}%). Pastikan ini gambar Bawang Merah/Putih.")
+        elif label == "bawang_merah":
+            st.success(f"🧅 Bawang Merah ({conf:.2f}%)")
         else:
-
-            st.success(
-                f"🧄 Bawang Putih ({conf:.2f}%)"
-            )
+            st.success(f"🧄 Bawang Putih ({conf:.2f}%)")
 
         # Menampilkan confidence
         st.write("Tingkat Kepercayaan")
